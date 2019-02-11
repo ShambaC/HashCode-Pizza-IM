@@ -11,9 +11,9 @@ unsigned int H;                        //Maximum number of cells in the slice
 int Pizza[1000][1000];             //Legendary Pizza
 int i, j;                                          //Loop Variables
 
-char filename[10];
+char filename[10];                 //filename of the input file
 
-fstream input_file;
+fstream input_file;                 //input_file filestream object
 
 
 int main()
@@ -25,6 +25,11 @@ int main()
 
     input_file.open(filename, ios::in);
     input_file.seekg(0);
+
+    while(!input_file.eof())
+    {
+
+    }
 
     return 0;
 }
