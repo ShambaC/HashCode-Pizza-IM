@@ -8,7 +8,7 @@ unsigned int C;                        //Number of columns
 unsigned int L;                         //Minimum number of ingredients
 unsigned int H;                        //Maximum number of cells in the slice
 
-int Pizza[1000][1000];             //Legendary Pizza
+char Pizza[1000][1000];         //Legendary Pizza
 int i, j;                                          //Loop Variables
 
 char filename[10];                 //filename of the input file
@@ -28,7 +28,41 @@ int main()
 
     while(!input_file.eof())
     {
+        int k = 0;
+        char ch;
+        input_file.get(ch);
 
+        if(ch != ' ' || ch != '\n')
+        {
+            switch(k)
+            {
+            case 0 :
+                R = ch;
+                k++;
+                break;
+            case 1 :
+                C = ch;
+                k++;
+                break;
+            case 2 :
+                L = ch;
+                k++;
+                break;
+            case 3 :
+                H = ch;
+                k++;
+                break;
+            default :
+                Pizza[i][j] = ch;
+                j++;
+                if(j == C)
+                {
+                    j = 0;
+                    i++;
+                }
+                break;
+            }
+        }
     }
 
     return 0;
