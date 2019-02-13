@@ -18,7 +18,7 @@ fstream input_file;                 //input_file filestream object
 
 void CreatePizza();                //Will Create The Fking Pizza
 void TakeInput();                  //Will take those asshole inputs
-void MakeSlices();
+void IngrediantFinder();
 int main()
 {
     CreatePizza();
@@ -80,6 +80,27 @@ void TakeInput(){
         }
     }
 }
-void MakeSlices(){
+int IngrediantFinder(){//Work in progress, if the square piece doesnt satisfies, it will extending through columns first then through rows,if slice is satisfied return the number of slices
+   int CountT=0;    //Counts the tomatoes
+   int CountM=0;   //Count the Mushrooms
+   int LoopR=2;
+   int LoopC=2;
+   bool Swap=false;
+   int slice=0;
+   if(H>2){
+    for(int i=0;i<LoopR;i++){
+        for(int j=0;j<LoopC;j++){
+            if(strcmp(Pizza[i][j],"T")){
+                CountT++;
+            }
+            else if(strcmp(Pizza[i][j],"M")){
+                CountM++;
+            }
+            if(CountM<=L&&CountT<=L&&(CountM>=2||CountT>=2)){
 
+                break;
+            }
+        }
+    }
+   }
 }
