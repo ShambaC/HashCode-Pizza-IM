@@ -8,7 +8,11 @@ unsigned int C;                        //Number of columns
 unsigned int L;                         //Minimum number of ingredients
 unsigned int H;                        //Maximum number of cells in the slice
 
-char Pizza[1000][1000];         //Legendary Pizza
+struct Pizza{
+char Value;
+bool Occupied;
+int Serial;
+}P[1000][1000];       //Legendary Pizza;
 int i=0, j=0;                                          //Loop Variables
 
 char fileLocation[40];                 //file location of file
@@ -68,7 +72,8 @@ void TakeInput(){
                 k++;
                 break;
             default :
-                Pizza[i][j] = ch;
+                P[i][j].Value = ch;
+                P[i][j].Occupied=false;
                 j++;
                 if(j == C)
                 {
@@ -85,22 +90,47 @@ int IngrediantFinder(){//Work in progress, if the square piece doesnt satisfies,
    int CountM=0;   //Count the Mushrooms
    int LoopR=2;
    int LoopC=2;
+   int Serial=1;
    bool Swap=false;
    int slice=0;
    if(H>2){
-    for(int i=0;i<LoopR;i++){
-        for(int j=0;j<LoopC;j++){
-            if(strcmp(Pizza[i][j],"T")){
+    for(int m=0;i<LoopR;i++){
+        for(int n=0;j<LoopC;j++){
+                  P[m][n].Serial=Serial;
+            if(P[m][n].Value=="T"){
                 CountT++;
             }
-            else if(strcmp(Pizza[i][j],"M")){
+            else if(P[m][n].Value=="T"){
                 CountM++;
-            }
-            if(CountM<=L&&CountT<=L&&(CountM>=2||CountT>=2)){
-
-                break;
             }
         }
     }
+            if(CountM<=L&&CountT<=L&&(CountM>=2||CountT>=2)){
+               slice++;
+               Serial++;
+            }
+            else if(Swap==false){
+                if(LoopR<R){
+                    LoopR++;
+                    Swap=true;
+                }
+                else{
+                    if(LoopC<C){
+                        LoopC++;
+                    }
+                }
+            }
+            else if(Swap==true){
+                if(LoopC<C){
+                    LoopC++;
+                    Swap=false;
+                }
+                  else{
+                    if(LoopR<R){
+                        LoopR++;
+                    }
+                }
+            }
+
    }
 }
