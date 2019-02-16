@@ -93,9 +93,12 @@ int IngrediantFinder(){//Work in progress, if the square piece doesnt satisfies,
    int Serial=1;
    bool Swap=false;
    int slice=0;
+   int Rinital=0;
+   int Cinitial=0;
+   bool Completed=false;
    if(H>2){
-    for(int m=0;i<LoopR;i++){
-        for(int n=0;j<LoopC;j++){
+    for(int m=Rinital;i<LoopR;i++){
+        for(int n=Cinitial;j<LoopC;j++){
                   P[m][n].Serial=Serial;
             if(P[m][n].Value=="T"){
                 CountT++;
@@ -108,6 +111,22 @@ int IngrediantFinder(){//Work in progress, if the square piece doesnt satisfies,
             if(CountM<=L&&CountT<=L&&(CountM>=2||CountT>=2)){
                slice++;
                Serial++;
+               if(LoopR==R){
+                Rinital=0;
+                Cinitial=LoopC;
+                LoopC+=2;
+               }
+               else if(LoopC==C){
+                Cinitial=0;
+                Rinital=LoopR;
+                LoopR+=2;
+               }
+               else if(LoopC==C&&LoopR==R){
+                Completed=true;
+               }
+               else{
+                //?????????????????????????????????????????
+               }
             }
             else if(Swap==false){
                 if(LoopR<R){
