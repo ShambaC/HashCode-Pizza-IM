@@ -22,7 +22,7 @@ fstream input_file;                 //input_file filestream object
 
 void CreatePizza();                //Will Create The Fking Pizza
 void TakeInput();                  //Will take those asshole inputs
-void IngrediantFinder();
+int IngrediantFinder();
 int main()
 {
     CreatePizza();
@@ -96,14 +96,15 @@ int IngrediantFinder(){//Work in progress, if the square piece doesnt satisfies,
    int Rinital=0;
    int Cinitial=0;
    bool Completed=false;
+   while(Completed==false){
    if(H>2){
     for(int m=Rinital;i<LoopR;i++){
         for(int n=Cinitial;j<LoopC;j++){
                   P[m][n].Serial=Serial;
-            if(P[m][n].Value=="T"){
+            if(P[m][n].Value=='T'){
                 CountT++;
             }
-            else if(P[m][n].Value=="T"){
+            else if(P[m][n].Value=='M'){
                 CountM++;
             }
         }
@@ -111,12 +112,12 @@ int IngrediantFinder(){//Work in progress, if the square piece doesnt satisfies,
             if(CountM<=L&&CountT<=L&&(CountM>=2||CountT>=2)){
                slice++;
                Serial++;
-               if(LoopR==R){
+               if(LoopR==(R-1){
                 Rinital=0;
                 Cinitial=LoopC;
                 LoopC+=2;
                }
-               else if(LoopC==C){
+               else if(LoopC==(C-1){
                 Cinitial=0;
                 Rinital=LoopR;
                 LoopR+=2;
@@ -150,6 +151,7 @@ int IngrediantFinder(){//Work in progress, if the square piece doesnt satisfies,
                     }
                 }
             }
+   }
 
    }
 }
