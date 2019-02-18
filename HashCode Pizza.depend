@@ -1,0 +1,5 @@
+# depslib dependency file v1.0
+1549987892 source:d:\hashcode-pizza-im\main.cpp
+	<iostream>
+	<fstream>
+
